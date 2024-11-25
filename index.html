@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit JSON Receipt</title>
+  </head>
+  <body>
+    <h1>Submit JSON test Receipt</h1>
+    <form action="/receipts/process" method="post">
+      <label for="jsonInput">Receipt JSON:</label><br />
+      <textarea
+        id="jsonInput"
+        name="jsonInput"
+        rows="10"
+        cols="50"
+        required
+      ></textarea
+      ><br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receipt ID</title>
+  </head>
+  <body>
+    <h1>Receipt Submitted</h1>
+    <p>Your receipt ID is: <span id="receipt-id"></span></p>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      if (id) {
+        document.getElementById("receipt-id").textContent = id;
+      } else {
+        document.getElementById("receipt-id").textContent = "No ID found.";
+      }
+    </script>
+  </body>
+  <div>
+    <h1>Add ID below and press the submit button to get the point total:</h1>
+    <form id="pointsForm" method="get">
+      <label for="jsonInput">ID:</label><br />
+      <textarea
+        id="idInput"
+        name="idInput"
+        rows="1"
+        cols="50"
+        required
+      ></textarea
+      ><br />
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      document
+        .getElementById("pointsForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const id = document.getElementById("idInput").value.trim();
+
+          if (id) {
+            window.location.href = `/receipts/${id}/points`;
+          } else {
+            alert("Please enter a valid ID.");
+          }
+        });
+    </script>
+  </div>
+</html>
